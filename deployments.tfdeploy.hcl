@@ -22,7 +22,7 @@ deployment "production" {
 
 orchestrate "auto_approve" "no_s3_changes" {
   check {
-    condition = context.plan.component_changes["component.s3"].total == 0
+    condition = context.plan.component_changes["component.s3[\"us-east-1\"]"] && context.plan.component_changes["component.s3[\"us-east-1\"]"].total == 0
     error_message = "Changes proposed to s3 component."
   }
 }
