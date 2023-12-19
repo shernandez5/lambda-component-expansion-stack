@@ -9,3 +9,8 @@ variable "identity_token_file" {
 variable "role_arn" {
   type = string
 }
+
+variable "prefix" {
+  type = string
+  default = "hello-world-lambda-changed"
+}
