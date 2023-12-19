@@ -22,12 +22,12 @@ deployment "production" {
 
 orchestrate "auto_approve" "safe_plans" {
   check {
-    condition     = plan.changes.destroy == 0
+    condition     = context.plan.changes.destroy == 0
     error_message = "Plan has ${plan.changes.destroy} resources to be destroyed."
   }
 
   check {
-     condition     = plan.deployment.name != "production"
+     condition     = context.plan.deployment.name != "production"
      error_message = "Production plans are not eligible for auto_approve."
    }
 }
