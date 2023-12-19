@@ -1,10 +1,16 @@
 # lambda-component-expansion-stack
 
+_This is an example stack configuration for the private preview of Terraform Stacks. Language
+constructs and features are subject to change given feedback received during this preview. Do not
+use Stacks for production workloads at this time._
+
+![lambda-component-expansion-stack](https://github.com/hashicorp/lambda-component-expansion-stack/assets/2430490/4c4b9820-e84c-4966-bbe5-b86a7aff787b)
+
 An example Terraform Stack that provisions an AWS S3 bucket, an AWS Lambda function served from that bucket,
 and an AWS API Gateway to invoke that function at a URL, all across multiple AWS accounts with
 varying regions which that account services.
 
-This is the same system as in hashicorp/lambda-multi-account-stack, but additionally demonstrates
+This is the same system as in [hashicorp/lambda-multi-account-stack](https://github.com/hashicorp/lambda-multi-account-stack), but additionally demonstrates
 a single deployment using component/provider configuration expansion with `for_each` to provision
 modules in multiple AWS regions for a given environment.
 
@@ -24,7 +30,7 @@ identity provider. Details of all of this are found in the provided Stacks User 
 
 1. **Configure AWS authentication** by creating new IAM roles in the AWS web console (or with
    Terraform itself!) with proper permissions (S3, Lambda, and API Gateway) and a trust policies to
-   allow the role to be assumed by Terraform Cloud (the OIDC identity provider). More details on this
+   allow the roles to be assumed by Terraform Cloud (the OIDC identity provider). More details on this
    step can be found in the Stacks User Guide.
 2. **Fork this repository** to your own GitHub account, such that you can edit this stack configuration
    for your purposes.
