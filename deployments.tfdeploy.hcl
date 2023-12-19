@@ -20,9 +20,14 @@ deployment "production" {
   }
 }
 
-orchestrate "auto_approve" "no_s3_changes" {
+orchestrate "auto_approve" "safe_plans" {
   check {
-    condition = context.plan.component_changes["component.s3[\"us-east-1\"]"] && context.plan.component_changes["component.s3[\"us-east-1\"]"].total == 0
-    error_message = "Changes proposed to s3 component."
+    condition     = plan.changes.destroy == 0
+    error_message = "Plan has ${plan.changes.destroy} resources to be destroyed."
   }
+
+  check {
+     condition     = plan.deployment.name != "production"
+     error_message = "Production plans are not eligible for auto_approve."
+   }
 }
