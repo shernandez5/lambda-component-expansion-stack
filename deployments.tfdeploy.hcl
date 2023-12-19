@@ -19,15 +19,3 @@ deployment "production" {
     identity_token_file = identity_token.aws.jwt_filename
   }
 }
-
-orchestrate "auto_approve" "safe_plans" {
-  check {
-    condition     = context.plan.changes.remove == 0
-    error_message = "Plan has ${context.plan.changes.remove} resources to be destroyed."
-  }
-
-  check {
-     condition     = context.plan.deployment.name != "production"
-     error_message = "Production plans are not eligible for auto_approve."
-   }
-}
