@@ -19,3 +19,10 @@ deployment "production" {
     identity_token_file = identity_token.aws.jwt_filename
   }
 }
+
+orchestrate "auto_approve" "no_s3_changes" {
+  check {
+    condition = context.plan.component_changes["component.s3"].total == 0
+    error_message = "Changes proposed to s3 component."
+  }
+}
