@@ -20,6 +20,7 @@ component "lambda" {
 
   inputs = {
     region    = var.regions
+    prefix    = var.prefix
     bucket_id = component.s3[each.value].bucket_id
   }
 
