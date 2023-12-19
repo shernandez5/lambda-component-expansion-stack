@@ -23,7 +23,7 @@ deployment "production" {
 orchestrate "auto_approve" "safe_plans" {
   check {
     condition     = context.plan.changes.remove == 0
-    error_message = "Plan has ${plan.changes.remove} resources to be destroyed."
+    error_message = "Plan has ${context.plan.changes.remove} resources to be destroyed."
   }
 
   check {
