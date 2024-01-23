@@ -36,3 +36,4 @@ deployment "disaster-recovery" {
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
     identity_token_file = identity_token.aws.jwt_filename
   }
+}
