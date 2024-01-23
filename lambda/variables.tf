@@ -4,5 +4,5 @@ variable "bucket_id" {
 
 variable "prefix" {
   type = string
-  default = "hello-world-lambda-changed"
+  default = "prefix"
 }
