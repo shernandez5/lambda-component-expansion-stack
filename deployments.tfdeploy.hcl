@@ -28,3 +28,12 @@ deployment "disaster-recovery" {
     identity_token_file = identity_token.aws.jwt_filename
   }
 }
+
+deployment "west-coast-dev" {
+  variables = {
+    prefix              = "west-coast-dev"
+    regions             = ["us-west-1"]
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
+    identity_token_file = identity_token.aws.jwt_filename
+  }
+}
