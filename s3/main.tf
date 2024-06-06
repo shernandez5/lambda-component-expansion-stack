@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 resource "random_pet" "lambda_bucket_name" {
   prefix = "hello-world-lambda"
   length = 2

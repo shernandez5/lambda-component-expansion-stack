@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 require 'json'
 
 module LambdaFunctions
@@ -12,9 +9,15 @@ module LambdaFunctions
       {
         statusCode: 200,
         headers: {
-          'Content-Type' => 'text/plain'
+          'Content-Type' => 'text/html; charset=UTF-8'
         },
-        body: "Hello, #{name}!",
+        body: "<html>
+                <body>
+                  <h1>Hello, #{name}!</h1>
+                  <img src=\"https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg\" alt=\"A cute orange cat lying on its back.\">
+                </body>
+              </html>
+          ",
       }
     end
   end

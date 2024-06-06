@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 variable "regions" {
   type = set(string)
 }
@@ -11,6 +8,11 @@ variable "identity_token_file" {
 
 variable "role_arn" {
   type = string
+}
+
+variable "prefix" {
+  type = string
+  default = "hello-world-lambda-changed"
 }
 
 variable "default_tags" {

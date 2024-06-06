@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 component "s3" {
   for_each = var.regions
 
@@ -23,6 +20,7 @@ component "lambda" {
 
   inputs = {
     region    = var.regions
+    prefix    = var.prefix
     bucket_id = component.s3[each.value].bucket_id
   }
 

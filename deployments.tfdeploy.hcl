@@ -1,25 +1,30 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 identity_token "aws" {
-  audience = ["<Set to your AWS IAM assume-role audience>"]
+  audience = ["aws.workload.identity"]
 }
 
-deployment "development" {
+deployment "east-coast-dev" {
   variables = {
+    prefix              = "east-coast-dev"
     regions             = ["us-east-1"]
-    role_arn            = "<Set to your development AWS account IAM role ARN>"
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
     identity_token_file = identity_token.aws.jwt_filename
-    default_tags      = { stacks-preview-example = "lambda-component-expansion-stack" }
   }
 }
 
 deployment "production" {
   variables = {
+    prefix              = "production"
     regions             = ["us-east-1", "us-west-1"]
-    role_arn            = "<Set to your production AWS account IAM role ARN>"
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
     identity_token_file = identity_token.aws.jwt_filename
-    default_tags      = { stacks-preview-example = "lambda-component-expansion-stack" }
   }
 }
 
+deployment "disaster-recovery" {
+  variables = {
+    prefix              = "disaster-recovery"
+    regions             = ["us-east-1"]
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
+    identity_token_file = identity_token.aws.jwt_filename
+  }
+}
