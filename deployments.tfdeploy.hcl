@@ -3,7 +3,7 @@ identity_token "aws" {
 }
 
 deployment "east-coast-dev" {
-  variables = {
+  inputs = {
     prefix              = "east-coast-dev"
     regions             = ["us-east-1"]
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
@@ -12,7 +12,7 @@ deployment "east-coast-dev" {
 }
 
 deployment "production" {
-  variables = {
+  inputs = {
     prefix              = "production"
     regions             = ["us-east-1", "us-west-1"]
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
@@ -21,7 +21,7 @@ deployment "production" {
 }
 
 deployment "disaster-recovery" {
-  variables = {
+  inputs = {
     prefix              = "disaster-recovery"
     regions             = ["us-east-1"]
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
