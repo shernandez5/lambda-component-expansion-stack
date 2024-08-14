@@ -40,3 +40,22 @@ identity provider. Details of all of this are found in the provided Stacks User 
 5. **Provision away!** Once applied, look at the `invoke_url` attribute for the
    `aws_apigatewayv2_stage.lambda` resource in the API Gateway component for a given deployment; add `/hello?name=<Name>` to
    get a warm greeting! (e.g. `https://wbshl7x6wb.execute-api.us-east-1.amazonaws.com/serverless_lambda_stage/hello?name=Chris`)
+
+
+
+   Try adding an orchestration rule
+
+orchestrate "auto_approve" "safe_plans" {
+ # Ensure that no resources are being removed
+ check {
+   condition     = context.plan.changes.remove == 0
+   reason = "Plan has ${context.plan.changes.remove} resources to be destroyed."
+ }
+
+ # Ensure that the deployment is not production or disaster-recovery
+ check {
+    condition     = context.plan.deployment.name != "production" && context.plan.deployment.name != "disaster-recovery"
+    reason = "Production and Disaster Recovery plans are not eligible for auto_approve."
+  }
+}
+
