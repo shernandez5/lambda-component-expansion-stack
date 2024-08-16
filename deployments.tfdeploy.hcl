@@ -37,3 +37,18 @@ deployment "disaster-recovery" {
     identity_token_file = identity_token.aws.jwt_filename
   }
 }
+
+orchestrate "auto_approve" "safe_plans" {
+ # Ensure that no resources are being removed
+ check {
+   condition     = context.plan.changes.remove == 0
+   reason = "Plan has ${context.plan.changes.remove} resources to be destroyed."
+ }
+
+ # Ensure that the deployment is not production or disaster-recovery
+ check {
+    condition     = context.plan.deployment.name != "production" && context.plan.deployment.name != "disaster-recovery"
+    reason = "Production and Disaster Recovery plans are not eligible for auto_approve."
+  }
+}
+
