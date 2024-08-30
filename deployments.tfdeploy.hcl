@@ -4,7 +4,7 @@ identity_token "aws" {
 
 deployment "west-coast-dev" {
   inputs = {
-    prefix              = "west-coast-dev"
+    prefix              = "west-coast-development"
     regions             = ["us-west-1"]
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
     identity_token_file = identity_token.aws.jwt_filename
