@@ -47,7 +47,7 @@ deployment "disaster-recovery" {
 #
 #  # Ensure that the deployment is not production or disaster-recovery
 #  check {
-#    condition     = context.plan.deployment != "production" && context.plan.deployment != "disaster-recovery"
+#    condition     = context.plan.deployment != deployment.production && context.plan.deployment != deployment.disaster-recovery
 #    reason = "Production and Disaster Recovery plans are not eligible for auto_approve."
 #  }
 #}
