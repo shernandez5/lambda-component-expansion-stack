@@ -11,10 +11,28 @@ deployment "west-coast-dev" {
   }
 }
 
+deployment "west2-coast-dev" {
+  inputs = {
+    prefix              = "west-coast-development"
+    regions             = ["us-west-2"]
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
+    identity_token      = identity_token.aws.jwt
+  }
+}
+
 deployment "east-coast-dev" {
   inputs = {
     prefix              = "east-coast-dev"
     regions             = ["us-east-1"]
+    role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
+    identity_token      = identity_token.aws.jwt
+  }
+}
+
+deployment "east2-coast-dev" {
+  inputs = {
+    prefix              = "east-coast-dev"
+    regions             = ["us-east-2"]
     role_arn            = "arn:aws:iam::225401527358:role/lambda-component-expansion-stack"
     identity_token      = identity_token.aws.jwt
   }
