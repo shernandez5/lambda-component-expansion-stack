@@ -42,6 +42,15 @@ deployment "east2-coast-dev" {
   }
 }
 
+deployment "east3-coast-dev" {
+  inputs = {
+    prefix              = "east-coast-dev"
+    regions             = ["us-east-2"]
+    role_arn            = local.role_arn
+    identity_token      = identity_token.aws.jwt
+  }
+}
+
 deployment "production" {
   inputs = {
     prefix              = "production"
