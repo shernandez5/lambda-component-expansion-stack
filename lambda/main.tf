@@ -27,7 +27,7 @@ resource "aws_s3_object" "lambda_hello_world" {
 }
 
 resource "random_pet" "lambda_function_name" {
-  prefix = "${var.prefix}-lambda-hii"
+  prefix = "${var.prefix}-lambda-hello"
   length = 2
 }
 
