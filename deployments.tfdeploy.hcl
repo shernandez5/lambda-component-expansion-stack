@@ -13,6 +13,7 @@ deployment "west-coast-dev" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "west2-coast-dev" {
@@ -22,6 +23,7 @@ deployment "west2-coast-dev" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "east-coast-dev" {
@@ -31,6 +33,7 @@ deployment "east-coast-dev" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "east2-coast-dev" {
@@ -40,6 +43,7 @@ deployment "east2-coast-dev" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "east3-coast-dev" {
@@ -49,6 +53,7 @@ deployment "east3-coast-dev" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "production" {
@@ -58,6 +63,7 @@ deployment "production" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 deployment "disaster-recovery" {
@@ -67,6 +73,7 @@ deployment "disaster-recovery" {
     role_arn            = local.role_arn
     identity_token      = identity_token.aws.jwt
   }
+  destroy = true
 }
 
 # orchestrate "auto_approve" "safe_plans" {
